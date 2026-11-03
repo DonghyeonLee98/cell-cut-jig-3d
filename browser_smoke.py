@@ -2,7 +2,7 @@
 Usage: python browser_smoke.py [url] [QA-output-directory]
 Requires playwright + installed Chromium; no credentials are used.
 """
-import sys,json,time
+import sys,json,time,os
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 BASE=(sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8767/').rstrip('/')+'/'
@@ -12,7 +12,7 @@ def check(name,value):
  assert value,name
  results.append({'check':name,'passed':True})
 with sync_playwright() as p:
- browser=p.chromium.launch(headless=True,args=['--use-angle=swiftshader','--enable-unsafe-swiftshader'])
+ browser=p.chromium.launch(headless=True,channel=os.environ.get('PW_CHANNEL') or None,args=['--use-angle=swiftshader','--enable-unsafe-swiftshader'])
  page=browser.new_page(viewport={'width':1450,'height':1000});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
  page.goto(BASE,wait_until='networkidle');page.wait_for_function('window.jigReview?.getState().ready',timeout=60000)
  get=lambda:page.evaluate('window.jigReview.getState()')
@@ -37,6 +37,16 @@ with sync_playwright() as p:
  page.locator('#magnify').select_option('1');check('unexaggerated error setting',get()['magnify']==1)
  page.locator('[data-topic=rail]').click();check('four form/roughness concept diagrams',page.locator('.metric-grid svg').count()==4)
  page.wait_for_timeout(250);page.screenshot(path=str(OUT/'rail-final.png'),full_page=True)
+ # Nextron holder interface view: isolated parts, numbered dimension tags, force arrows, x = 0 cutaway, friction lab.
+ page.locator('[data-topic=mount]').click();page.wait_for_timeout(300);g=get()
+ check('mount view isolates interface parts',g['topic']=='mount' and 0<g['visible']<40)
+ check('mount view shows numbered dimension tags',g['tags']>=8)
+ check('mount spec table lists ordered pocket 50x50','50.0×50.0' in page.locator('.spec').inner_text())
+ page.locator('#section').check();check('mount cutaway at x = 0',get()['section'])
+ page.locator('#error').focus();page.keyboard.press('End');check('friction lab reaches 200 N push','200 N' in page.locator('#errorValue').inner_text())
+ page.locator('#forces').uncheck();check('dimension/force overlay can be hidden',get()['tags']==0)
+ page.wait_for_timeout(250);page.screenshot(path=str(OUT/'mount-final.png'))
+ page.locator('[data-topic=operation]').click();check('other chapters restore magnify row and all parts',page.locator('#scaleRow').is_visible() and get()['visible']==90)
  r=page.request.get(BASE+'assets/jlccnc_tolerance_drawings_261102.pdf');check('two-page PDF resource available',r.ok and r.body()[:4]==b'%PDF')
  check('no application JS exceptions on desktop',not errors)
  # Touch-enabled mobile, with an actual touch pointer drag on the canvas.
@@ -49,6 +59,8 @@ with sync_playwright() as p:
  session.send('Input.dispatchTouchEvent',{'type':'touchEnd','touchPoints':[]})
  check('touch drag controls arm without page pan',mobile.evaluate('window.jigReview.getState().angle')>-17)
  check('mobile has no horizontal overflow',mobile.evaluate('document.documentElement.scrollWidth<=window.innerWidth'))
+ mobile.locator('[data-topic=mount]').tap();mobile.wait_for_timeout(300);check('mobile mount view has no horizontal overflow',mobile.evaluate('document.documentElement.scrollWidth<=window.innerWidth'))
+ mobile.screenshot(path=str(OUT/'mobile-mount.png'),full_page=True);mobile.locator('[data-topic=operation]').tap()
  mobile.screenshot(path=str(OUT/'mobile-final.png'),full_page=True)
  # Previous version remains available, including both blades and practice mode.
  legacy=browser.new_page(viewport={'width':1280,'height':900});legacy_errors=[];legacy.on('pageerror',lambda e:legacy_errors.append(str(e)))

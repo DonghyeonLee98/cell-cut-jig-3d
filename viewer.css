@@ -2,3 +2,11 @@
 .metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.metric-grid>div{font-size:11px}.metric-grid svg{margin:5px 0}.metric-grid svg text{font-size:9px}
 
 h1,h2,h3,p,.steps li{word-break:keep-all;overflow-wrap:break-word}
+
+#tags{position:absolute;inset:0;pointer-events:none;overflow:hidden}.tag{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:4px;background:#fffffff0;border:1px solid #146d67;border-radius:999px;font-size:11px;line-height:1.3;padding:2px;white-space:nowrap;color:#1f2d35;box-shadow:0 1px 3px #0002}.tag i{font-style:normal;display:inline-grid;place-items:center;width:17px;height:17px;border-radius:50%;background:#146d67;color:#fff;font-size:10px;font-weight:800}.tag.warn{border-color:#bd6b18}.tag.warn i{background:#bd6b18}.tag span{display:none}.tag.warn span{display:inline;padding-right:6px}
+.spec{width:100%;border-collapse:collapse;font-size:12px;margin:10px 0 4px}.spec th,.spec td{border-bottom:1px solid var(--line);padding:6px 4px;vertical-align:top;text-align:left;word-break:keep-all;overflow-wrap:anywhere}.spec th{font-size:11px;color:var(--muted);font-weight:700}.spec td:first-child{white-space:nowrap;color:#41545f}.spec td b{font-variant-numeric:tabular-nums}
+.st{display:inline-block;font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px;margin-left:3px;white-space:nowrap}.st.ok{background:#e3f1ee;color:#146d67}.st.cad{background:#eef0f8;color:#3d4f8a}.st.wait{background:#fbeee0;color:#9a5512}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:11px;margin:8px 0}.legend span{display:inline-flex;align-items:center;gap:5px}.legend em{width:16px;height:4px;border-radius:2px;display:inline-block}
+.verdict{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:12px;margin:10px 0}.verdict b{white-space:nowrap}.verdict .good{color:#146d67}.verdict .weak{color:#b14b24}
+.fixes{padding-left:20px;font-size:12px;color:#43535d}.fixes li{margin-bottom:8px}
+@media(max-width:760px){.tag{font-size:10px;padding:1px 3px}.tag span{display:none}.chapters button{flex:1 1 auto}.spec{font-size:11px}.spec td:first-child{white-space:normal;width:6.2em;min-width:6.2em;word-break:keep-all;overflow-wrap:normal}}

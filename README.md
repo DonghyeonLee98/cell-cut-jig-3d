@@ -4,6 +4,8 @@ Live: https://donghyeonlee98.github.io/cell-cut-jig-3d/
 
 2026-11-03: 기본 화면을 최신 **레버식** 설계로 바꿨습니다. 아래 초기 리니어 방식은 [legacy.html](legacy.html)에 보존했습니다.
 
+2026-11-03 오후: **05 넥스트론 결합부** 탭을 추가했습니다. 소켓 블록·어댑터·홀더·토글 클램프만 남기고, 번호 표지(오른쪽 치수 표와 같은 번호), 힘 화살표, x = 0 절개, 플런저 미는 힘과 마찰을 비교하는 막대 그림을 보여 줍니다. 판정: 아래·앞뒤·옆은 충분하고 위(+z)는 마찰에만 기댑니다. 홀더 치수는 우리 CAD 가정값만 싣고, 넥스트론 도면에서 읽은 값은 공개 페이지에 넣지 않았습니다(도면이 RESTRICTED).
+
 ## 지금 해볼 것
 
 1. **손잡이 끌기**를 누르고 3D 화면을 좌우로 드래그합니다. 레버가 −19.5°에서 +19.5° 사이로 움직입니다. **시점 회전**은 물체를 돌려 보는 모드이며, 실제 기구 각도와 구분됩니다.
@@ -27,7 +29,7 @@ Three.js r128 / OrbitControls / GLTFLoader를 기존 페이지와 같은 버전�
 
 - mesh export: `python export_viewer.py <local-CAD-directory>` (cadquery-ocp, numpy, trimesh). 원 CAD 파일을 읽기만 하며 웹용 GLB와 메타데이터만 만듭니다.
 - local server: `python -m http.server 8767`
-- interaction checks: `python browser_smoke.py http://127.0.0.1:8767/ <QA-directory>` (Playwright Chromium). 실제 마우스·터치 드래그, 시점 회전, 각도 재생, 분해·절개·투명, 4개 공차 도식, PDF, 모바일 가로 넘침, 기존 블레이드 전환·연습을 확인합니다.
+- interaction checks: `python browser_smoke.py http://127.0.0.1:8767/ <QA-directory>` (Playwright Chromium; 설치된 Edge로 돌리려면 `PW_CHANNEL=msedge`). 05 결합부 보기의 부품 분리·번호 표지·절개·마찰 막대·375 px 가로 넘침도 확인합니다. 실제 마우스·터치 드래그, 시점 회전, 각도 재생, 분해·절개·투명, 4개 공차 도식, PDF, 모바일 가로 넘침, 기존 블레이드 전환·연습을 확인합니다.
 - GitHub Pages: repository `main` branch, root directory.
 
 ---
