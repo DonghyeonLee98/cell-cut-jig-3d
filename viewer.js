@@ -102,7 +102,7 @@
   if(topic==='mount'){
    const F=e,now=MU*2*F,imp=MU*2*(F+100),sx=v=>20+Math.min(v,90)/90*290;
    $('#errorLabel').firstChild.textContent='토글 플런저가 미는 힘 ';$('#errorValue').value=F.toFixed(0)+' N';
-   const bar=(y,v,c,t)=>`<rect x="20" y="${y}" width="${sx(v)-20}" height="16" rx="3" fill="${c}"/><text x="${Math.min(sx(v),250)+5}" y="${y+12}">${v.toFixed(0)} N</text><text x="20" y="${y-4}">${t}</text>`;
+   const bar=(y,v,c,t)=>`<rect x="20" y="${y}" width="${sx(v)-20}" height="16" rx="3" fill="${c}"/><text x="${sx(v)>270?sx(v)-42:sx(v)+5}" y="${y+12}" style="${sx(v)>270?'fill:#fff;font-weight:700':''}">${v.toFixed(0)} N</text><text x="20" y="${y-4}">${t}</text>`;
    $('#schematic').innerHTML=`<svg viewBox="0 0 340 230" role="img" aria-label="위로 버티는 마찰과 들림 힘 비교">${bar(28,now,'#d9822b','지금: 플런저 + 핀 벽 마찰 (0.15 × 2 × F)')}${bar(78,imp,'#146d67','개선: + 옆 쐐기 100 N')}${bar(128,LIFT[0],'#b9a3d9','들림 힘, 날카로운 날 (가정)')}${bar(178,LIFT[1],'#8a4fc7','들림 힘, 무딘 날 (가정)')}<path d="M${sx(LIFT[1])} 18V205" stroke="#8a4fc7" stroke-dasharray="4 3"/><text x="20" y="222">막대 끝 90 N에서 자름 · 홀더 무게 약 1 N은 무시</text></svg>`;
    $('#labReadout').innerHTML=`지금 버티는 힘 <b class="${now<LIFT[1]?'bad':''}">${now.toFixed(0)} N</b> / 개선 후 <b>${imp.toFixed(0)} N</b> / 무딘 날 들림 <b>${LIFT[1]} N</b><br><span class="${now<LIFT[1]?'bad':''}">${now<LIFT[0]?'날카로운 날에서도 홀더가 들릴 수 있습니다.':now<LIFT[1]?'날이 무뎌지면 들릴 수 있습니다. 옆 쐐기나 걸림 턱이 필요합니다.':'마찰은 충분해 보입니다. 미는 힘이 이 값으로 유지되는지 실물에서 확인합니다.'}</span><br>μ = 0.15, 들림 힘 10·20 N은 가정입니다. 결론은 들림 시험(20 N에서 5 µm 이하)으로 냅니다.`;
   } else if(topic==='pivot'){

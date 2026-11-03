@@ -10,3 +10,4 @@ h1,h2,h3,p,.steps li{word-break:keep-all;overflow-wrap:break-word}
 .verdict{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:12px;margin:10px 0}.verdict b{white-space:nowrap}.verdict .good{color:#146d67}.verdict .weak{color:#b14b24}
 .fixes{padding-left:20px;font-size:12px;color:#43535d}.fixes li{margin-bottom:8px}
 @media(max-width:760px){.tag{font-size:10px;padding:1px 3px}.tag span{display:none}.chapters button{flex:1 1 auto}.spec{font-size:11px}.spec td:first-child{white-space:normal;width:6.2em;min-width:6.2em;word-break:keep-all;overflow-wrap:normal}}
+[hidden]{display:none!important}
