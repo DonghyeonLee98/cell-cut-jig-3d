@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>절단지그 — 움직이며 이해하기</title><link rel="stylesheet" href="viewer.css?v=261103q"></head>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>절단지그 — 움직이며 이해하기</title><link rel="stylesheet" href="viewer.css?v=261110"></head>
 <body>
-<header><div><span class="eyebrow">CELL CROSS-SECTION · DESIGN REVIEW</span><h1>절단지그, 움직이며 이해하기</h1></div><a class="paper" href="assets/jlccnc_tolerance_drawings_261102.pdf" target="_blank" rel="noopener">공차 도면 2쪽 ↗</a></header>
+<header><div><span class="eyebrow">CELL CROSS-SECTION · DESIGN REVIEW</span><h1>절단지그, 움직이며 이해하기</h1></div><div class="hlinks"><a class="paper" href="#measured">실측 11/10 ↓</a><a class="paper" href="assets/jlccnc_tolerance_drawings_261102.pdf" target="_blank" rel="noopener">공차 도면 2쪽 ↗</a></div></header>
 <main>
 <section class="workspace" aria-label="3D 절단지그">
  <nav class="chapters" aria-label="설명 주제"><button data-topic="operation" class="active">01 작동</button><button data-topic="pivot">02 피벗·베어링</button><button data-topic="rail">03 레일·평탄도</button><button data-topic="section">04 단면</button><button data-topic="mount">05 넥스트론 결합부</button></nav>
@@ -16,6 +16,26 @@
  <section class="lesson checklist"><h2>그래서, 업체에 무엇을 내나?</h2><p><b>수정 STEP 업로드는 완료.</b> 추가로 공차 PDF 한 개를 첨부합니다. 1쪽은 피벗, 2쪽은 레일입니다.</p><a href="assets/jlccnc_tolerance_drawings_261102.pdf" target="_blank" rel="noopener">통합 공차 도면 열기 ↗</a><p>레일 Ra 1.6 수락은 <b>표면 거칠기</b>를 완화한다는 뜻입니다. <b>두께·평탄도·평행도</b>까지 포기한다는 뜻은 아닙니다. 업체의 특별 공차 수락·추가비용·납기는 아직 미확인입니다.</p></section>
 </aside>
 </main>
-<footer>설계 검토용 · 실제 절단·충돌·구조 해석을 대체하지 않습니다. 홀더 치수는 11/9 입고 후 실측 예정. 구매품 외형과 볼 접촉은 모델 가정이며, 새 27 mm 스탠드오프의 와셔 조합은 실물 확인 전입니다. <a href="https://github.com/DonghyeonLee98/cell-cut-jig-3d">소스 / 근거 ↗</a></footer>
-<script src="vendor/three.min.js"></script><script src="vendor/OrbitControls.js"></script><script src="vendor/GLTFLoader.js"></script><script src="viewer.js?v=261103q"></script>
+<section id="measured" class="measured"><div class="eyebrow">MEASURED · 2026-11-10</div><h2>넥스트론 홀더 실측 (11/10)</h2>
+<p>실물 홀더를 캘리퍼로 잰 값과 사진입니다. 측정 불확도는 아직 반복 측정하지 않아 모릅니다. 넥스트론 도면에서 읽은 값은 비공개 자료라 이 페이지에 넣지 않았습니다.</p>
+<div class="photos">
+<figure><img src="assets/measured-261110/p1.jpg" loading="lazy" alt="홀더 바닥면과 스프링 2개"><figcaption><b>1. 바닥면.</b> 한 긴 변에 갈색 스트립과 코일 스프링 2개가 붙어 있습니다.</figcaption></figure>
+<figure><img src="assets/measured-261110/p2.jpg" loading="lazy" alt="홀더 윗면 A"><figcaption><b>2. 윗면 A.</b> 가운데 평면 양옆에 낮은 턱이 있고 대각 모서리에 작은 구멍 2개가 있습니다.</figcaption></figure>
+<figure><img src="assets/measured-261110/p4.jpg" loading="lazy" alt="홀더 윗면 B"><figcaption><b>3. 윗면 B.</b> A와 같은 계단 모양입니다. 끝이 탭과 노치로 180° 대칭입니다.</figcaption></figure>
+<figure><img src="assets/measured-261110/p3.jpg" loading="lazy" alt="챔버의 홀더 포켓"><figcaption><b>4. 챔버 포켓.</b> 홀더가 들어가는 자리입니다. 한쪽에서 마이크로미터가 밀고, 양쪽에 황동 핀이 있습니다.</figcaption></figure>
+<figure><img src="assets/measured-261110/p5.jpg" loading="lazy" alt="챔버에 장착한 홀더"><figcaption><b>5. 장착 상태.</b> 홀더 윗면이 챔버 윗면보다 낮게 들어갑니다.</figcaption></figure>
+</div>
+<h3>실측 치수</h3>
+<table class="mspec"><tr><th>항목</th><th>실측</th><th>이전 가정</th></tr>
+<tr><td>위에서 본 크기</td><td><b>22.02 × 30.99 mm</b></td><td>24.4 × 31.0</td></tr>
+<tr><td>높이(가장 높은 면)</td><td><b>21.01 mm</b></td><td>25 (결합부 표의 홀더 외형)</td></tr>
+<tr><td>낮은 면 높이</td><td><b>19.94 mm</b> (가장 높은 면보다 1.07 낮음)</td><td>없음(직육면체로 가정)</td></tr></table>
+<h3>달라진 점</h3>
+<ul class="fixes"><li>폭이 24.4에서 22.02로 줄었습니다. 길이는 거의 같습니다.</li><li>높이는 25에서 21.01로 줄었습니다. 19.94 mm는 1.07 mm 낮은 면의 높이라 날이 지나는 면에는 영향이 없습니다.</li><li>바닥에 스트립과 스프링이 있고 윗면이 계단형인 것은 가정에 없던 형상입니다. 가정 모델은 평평한 바닥의 직육면체였습니다.</li></ul>
+<h3>어댑터 v2 맞음 판정</h3>
+<p class="verdict-line"><b>맞음.</b> 어댑터 v2의 홀더 구멍은 23.0 × 31.3 mm이고 받침 윗면은 z −21.0입니다. 실측 22.02 × 30.99 mm는 구멍 안에 들어가고(여유 폭 0.98, 길이 0.31), 높이 21.01은 받침 기준과 같습니다. 수정은 필요 없습니다. PLA 출력은 출력 보정판(261110p)을 씁니다.</p>
+<p class="note">남은 확인: 스프링과 스트립이 홀더에서 떨어지는지, 턱의 폭·높이, 노치 위치는 아직 재지 않았습니다. 위 3D 모델의 홀더 외형은 아직 이전 가정(24.4 × 31 × 25)입니다. 실측값으로 모델을 바꾸지 않았습니다.</p>
+</section>
+<footer>설계 검토용 · 실제 절단·충돌·구조 해석을 대체하지 않습니다. 홀더 실측(11/10)은 <a href="#measured">아래 섹션</a>. 구매품 외형과 볼 접촉은 모델 가정이며, 새 27 mm 스탠드오프의 와셔 조합은 실물 확인 전입니다. <a href="https://github.com/DonghyeonLee98/cell-cut-jig-3d">소스 / 근거 ↗</a></footer>
+<script src="vendor/three.min.js"></script><script src="vendor/OrbitControls.js"></script><script src="vendor/GLTFLoader.js"></script><script src="viewer.js?v=261110"></script>
 </body></html>
